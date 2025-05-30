@@ -27,4 +27,5 @@ pip install -r requirements.txt
 ## Запуск тестов
 pytest -v tests/
 
-## Запуск 
+## **Создание html allure отчета
+allure serve allure-results
