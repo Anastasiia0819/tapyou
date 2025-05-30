@@ -4,11 +4,13 @@
 ## Структура проекта
 ```bash
 project/
+├── config/
+  ├── settings.py
 ├── tests/
 │ ├── test_users_gender.py # Тесты для запроса списка пользователей по гендеру
 │ ├── test_user_id.py # Тесты для запроса информации о пользователе по ID
-│ └── conftest.py # Конфигурация и фикстуры для тестов
 ├── requirements.txt # Зависимости проекта
+├── pytest.ini 
 └── README.md # Документация
 
 ## Стек технологий
@@ -24,3 +26,5 @@ pip install -r requirements.txt
 
 ## Запуск тестов
 pytest -v tests/
+
+## Запуск 
