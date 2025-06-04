@@ -8,9 +8,9 @@ from config.settings import Config
 class TestGetUserId:
     @allure.feature("Запрос пользователя по id")
     @allure.title("Получение информации о пользователе при вводе в поле id валидного значения")
-    def test_get_user_id_from_user_list(self):
+    @pytest.mark.parametrize("gender", ["male", "female"])
+    def test_get_user_id_from_user_list(self,gender):
         with allure.step("Получаем id пользователей из запроса users?gender=male"):
-            gender = "male"
             headers = {"accept": "application/json"}
             response_user_id_from_gender = requests.get(Config.get_user_by_gender(gender), headers=headers)
             response_user_id_from_gender_json = response_user_id_from_gender.json()
@@ -27,7 +27,7 @@ class TestGetUserId:
                 assert user["id"] == user_id
                 assert isinstance(user['id'], int)
                 assert "name" in user and user["name"]is not None
-                assert 'gender' in user and user["gender"]is not None
+                assert 'gender' in user and user["gender"] is not None and user["gender"] == gender
                 assert 'age' in user and isinstance(user['age'], int)
                 assert 'city' in user and user["city"]is not None
                 assert 'registrationDate' in user and user["registrationDate"]is not None
